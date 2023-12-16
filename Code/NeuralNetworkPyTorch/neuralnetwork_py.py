@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, r2_score
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -121,7 +121,10 @@ y_test_np = y_test_tensor.numpy()
 
 # Evaluate the Model Performance
 mse = mean_squared_error(y_test_np, y_pred)
+r2 = r2_score(y_test_np, y_pred)
+
 print(f'Mean Squared Error: {mse}')
+print(f'R-squared: {r2}')
 
 # Plotting the learning curve
 plt.plot(train_losses, label='Training Loss')
